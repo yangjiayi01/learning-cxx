@@ -3,6 +3,8 @@ set_encodings("utf-8")
 set_warnings("all")
 set_kind("binary")
 set_languages("cxx17")
+set_targetdir("$(buildir)/$(plat)/$(arch)/$(mode)")
+set_objectdir("$(buildir)/.objs/$(plat)/$(arch)/$(mode)")
 
 -- 格式化输出
 target("exercise00")
@@ -44,7 +46,7 @@ target("exercise08")
 target("exercise09")
     add_files("09_enum&union/main.cpp")
 
--- “普通”类型
+-- "普通"类型
 target("exercise10")
     add_files("10_trivial/main.cpp")
 
