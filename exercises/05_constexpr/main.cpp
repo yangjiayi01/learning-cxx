@@ -1,14 +1,13 @@
 #include "../exercise.h"
 
+// 带缓存的斐波那契计算
 constexpr unsigned long long fibonacci(int i) {
-    switch (i) {
-        case 0:
-            return 0;
-        case 1:
-            return 1;
-        default:
-            return fibonacci(i - 1) + fibonacci(i - 2);
+    unsigned long long cache[100]{0, 1};
+    if (i < 2) return cache[i];
+    for (int n = 2; n <= i; ++n) {
+        cache[n] = cache[n-1] + cache[n-2];
     }
+    return cache[i];
 }
 
 int main(int argc, char **argv) {
@@ -19,7 +18,7 @@ int main(int argc, char **argv) {
     // TODO: 观察错误信息，修改一处，使代码编译运行
     // PS: 编译运行，但是不一定能算出结果……
     constexpr auto ANS_N = 90;
-    constexpr auto ANS = fibonacci(ANS_N);
+    constexpr auto ANS = fibonacci(90);
     std::cout << "fibonacci(" << ANS_N << ") = " << ANS << std::endl;
 
     return 0;
